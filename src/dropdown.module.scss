@@ -1,0 +1,96 @@
+.container {
+  position: relative;
+  display: inline-block;
+
+  .toggle {
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border: 1px solid var(--gray-300);
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s background-color;
+
+    &:hover {
+      background-color: var(--gray-100);
+    }
+
+    &.active {
+      background-color: var(--gray-200);
+    }
+
+    .chevron {
+      transition: 0.3s transform;
+
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
+
+    .toggleText {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      box-shadow: none;
+      opacity: 0;
+      transform: scale(0.97, 0.94);
+    }
+    to {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+
+  .dropdownContent {
+    border-radius: 12px;
+    position: absolute;
+    left: auto;
+    right: 0px;
+    max-width: 200%;
+    margin-top: 8px;
+    animation: 0.3s reveal forwards;
+    transform-origin: top;
+
+    display: flex;
+    flex-direction: column;
+
+    .dropdownItem {
+      padding: 12px 16px;
+      margin: 4px;
+      border-radius: 6px;
+      transition: 0.3s background-color;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+
+      &:hover {
+        background-color: var(--green-100);
+        cursor: pointer;
+      }
+
+      .cardDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        > span {
+          font-weight: 500;
+
+          &.cardNumber {
+            color: var(--gray-500);
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
